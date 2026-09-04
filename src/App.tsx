@@ -9,7 +9,7 @@ import reaper7 from "./assets/reaper/reaper_7.png";
 import reaper8 from "./assets/reaper/reaper_8.png";
 // Chaff Cutter
 import chaffCutter1 from "./assets/chaff cutter/chaff_cutter_1.jpg";
-import chaffCutter2 from "./assets/chaff cutter/chaff_cutter_2.JPG";
+import chaffCutter2 from "./assets/chaff cutter/chaff_cutter_2.jpg";
 import chaffCutter3 from "./assets/chaff cutter/chaff_cutter_3.png";
 import chaffCutter4 from "./assets/chaff cutter/chaff_cutter_4.png";
 import chaffCutter5 from "./assets/chaff cutter/chaff_cutter_5.png";
@@ -139,7 +139,7 @@ function ReaperPage({ onBack }: { onBack: () => void }) {
       if (e.key === "Escape") closeLightbox();
       if (lightbox !== null) {
         if (e.key === "ArrowRight") setLightbox((p) => (p! + 1) % reaperImages.length);
-        if (e.key === "ArrowLeft")  setLightbox((p) => (p! - 1 + reaperImages.length) % reaperImages.length);
+        if (e.key === "ArrowLeft") setLightbox((p) => (p! - 1 + reaperImages.length) % reaperImages.length);
       }
     };
     window.addEventListener("keydown", handleKey);
@@ -333,7 +333,7 @@ function ChaffCutterPage({ onBack }: { onBack: () => void }) {
       if (e.key === "Escape") closeLightbox();
       if (lightbox !== null) {
         if (e.key === "ArrowRight") setLightbox((p) => (p! + 1) % chaffCutterImages.length);
-        if (e.key === "ArrowLeft")  setLightbox((p) => (p! - 1 + chaffCutterImages.length) % chaffCutterImages.length);
+        if (e.key === "ArrowLeft") setLightbox((p) => (p! - 1 + chaffCutterImages.length) % chaffCutterImages.length);
       }
     };
     window.addEventListener("keydown", handleKey);
@@ -471,7 +471,7 @@ function SeedDrillPage({ onBack }: { onBack: () => void }) {
       if (e.key === "Escape") closeLightbox();
       if (lightbox !== null) {
         if (e.key === "ArrowRight") setLightbox((p) => (p! + 1) % seedDrillImages.length);
-        if (e.key === "ArrowLeft")  setLightbox((p) => (p! - 1 + seedDrillImages.length) % seedDrillImages.length);
+        if (e.key === "ArrowLeft") setLightbox((p) => (p! - 1 + seedDrillImages.length) % seedDrillImages.length);
       }
     };
     window.addEventListener("keydown", handleKey);
@@ -608,7 +608,7 @@ function BlowerPage({ onBack }: { onBack: () => void }) {
       if (e.key === "Escape") closeLightbox();
       if (lightbox !== null) {
         if (e.key === "ArrowRight") setLightbox((p) => (p! + 1) % blowerImages.length);
-        if (e.key === "ArrowLeft")  setLightbox((p) => (p! - 1 + blowerImages.length) % blowerImages.length);
+        if (e.key === "ArrowLeft") setLightbox((p) => (p! - 1 + blowerImages.length) % blowerImages.length);
       }
     };
     window.addEventListener("keydown", handleKey);
@@ -743,7 +743,7 @@ function App() {
     support: 0,
   });
 
- /* ACTIVE NAVBAR CODE - START */
+  /* ACTIVE NAVBAR CODE - START */
 
   useEffect(() => {
 
@@ -819,10 +819,10 @@ function App() {
     setTimeout(() => { document.getElementById("agriculture")?.scrollIntoView({ behavior: "smooth" }); }, 100);
   };
 
-  if (showReaper)      return <ReaperPage onBack={goBack} />;
+  if (showReaper) return <ReaperPage onBack={goBack} />;
   if (showChaffCutter) return <ChaffCutterPage onBack={goBack} />;
-  if (showSeedDrill)   return <SeedDrillPage onBack={goBack} />;
-  if (showBlower)      return <BlowerPage onBack={goBack} />;
+  if (showSeedDrill) return <SeedDrillPage onBack={goBack} />;
+  if (showBlower) return <BlowerPage onBack={goBack} />;
 
   return (
     <div className="site">
@@ -831,37 +831,37 @@ function App() {
       <header className="navbar">
         <div className="nav-inner">
 
-         <nav className="nav-links">
+          <nav className="nav-links">
 
-  <a href="#home" className={activeSection === "home" ? "active" : ""}>
-    Home
-  </a>
+            <a href="#home" className={activeSection === "home" ? "active" : ""}>
+              Home
+            </a>
 
-  <a href="#agriculture" className={activeSection === "agriculture" ? "active" : ""}>
-    🌾 Agriculture
-  </a>
+            <a href="#agriculture" className={activeSection === "agriculture" ? "active" : ""}>
+              🌾 Agriculture
+            </a>
 
-  <a href="#road" className={activeSection === "road" ? "active" : ""}>
-    🚧 Road Equipment
-  </a>
+            <a href="#road" className={activeSection === "road" ? "active" : ""}>
+              🚧 Road Equipment
+            </a>
 
-  <a href="#subsidy" className={activeSection === "subsidy" ? "active" : ""}>
-    🏛️ Subsidy
-  </a>
+            <a href="#subsidy" className={activeSection === "subsidy" ? "active" : ""}>
+              🏛️ Subsidy
+            </a>
 
-  <a href="#about" className={activeSection === "about" ? "active" : ""}>
-    About Us
-  </a>
+            <a href="#about" className={activeSection === "about" ? "active" : ""}>
+              About Us
+            </a>
 
-  <a href="#why" className={activeSection === "why" ? "active" : ""}>
-    Why Us
-  </a>
+            <a href="#why" className={activeSection === "why" ? "active" : ""}>
+              Why Us
+            </a>
 
-  <a href="#contact" className={activeSection === "contact" ? "active" : ""}>
-    Contact
-  </a>
+            <a href="#contact" className={activeSection === "contact" ? "active" : ""}>
+              Contact
+            </a>
 
-</nav>
+          </nav>
           <a href="#contact" className="nav-contact">
             <span>Let's Talk</span>
             <b>→</b>
@@ -1142,16 +1142,16 @@ function App() {
       </section>
 
 
-     {/* ================= STATISTICS ================= */}
+      {/* ================= STATISTICS ================= */}
       <section className="stats-section">
 
         <div className="stats-heading">
-  <span>OUR PERFORMANCE</span>
-  <h2>Our Impact in Numbers</h2>
-  <p>
-    Trusted equipment, quality service and dependable support.
-  </p>
-</div>
+          <span>OUR PERFORMANCE</span>
+          <h2>Our Impact in Numbers</h2>
+          <p>
+            Trusted equipment, quality service and dependable support.
+          </p>
+        </div>
 
         <div className="stats-inner">
 
@@ -1328,93 +1328,93 @@ function App() {
         </div>
 
 
-          <div className="contact-grid">
+        <div className="contact-grid">
 
-  {/* PHONE 1 */}
-  <a href={`tel:${phone1}`} className="contact-card">
-    <div className="contact-icon">📞</div>
-    <span>CALL US</span>
-    <strong>{phone1}</strong>
-    <small>Tap to call</small>
-  </a>
-
-
-  {/* PHONE 2 */}
-  <a href={`tel:${phone2}`} className="contact-card">
-    <div className="contact-icon">📱</div>
-    <span>CALL US</span>
-    <strong>{phone2}</strong>
-    <small>Tap to call</small>
-  </a>
+          {/* PHONE 1 */}
+          <a href={`tel:${phone1}`} className="contact-card">
+            <div className="contact-icon">📞</div>
+            <span>CALL US</span>
+            <strong>{phone1}</strong>
+            <small>Tap to call</small>
+          </a>
 
 
-  {/* WHATSAPP */}
-  <a
-    href={`https://wa.me/${whatsapp}`}
-    target="_blank"
-    rel="noreferrer"
-    className="contact-card whatsapp-card"
-  >
-    <div className="contact-icon">💬</div>
-    <span>WHATSAPP</span>
-    <strong>Chat With Us</strong>
-    <small>Quick enquiry</small>
-  </a>
+          {/* PHONE 2 */}
+          <a href={`tel:${phone2}`} className="contact-card">
+            <div className="contact-icon">📱</div>
+            <span>CALL US</span>
+            <strong>{phone2}</strong>
+            <small>Tap to call</small>
+          </a>
 
 
-  {/* EMAIL */}
-  <a
-    href={`mailto:${email}`}
-    className="contact-card"
-  >
-    <div className="contact-icon">✉️</div>
-    <span>EMAIL</span>
-    <strong>Email Us</strong>
-    <small>{email}</small>
-  </a>
+          {/* WHATSAPP */}
+          <a
+            href={`https://wa.me/${whatsapp}`}
+            target="_blank"
+            rel="noreferrer"
+            className="contact-card whatsapp-card"
+          >
+            <div className="contact-icon">💬</div>
+            <span>WHATSAPP</span>
+            <strong>Chat With Us</strong>
+            <small>Quick enquiry</small>
+          </a>
 
 
-  {/* INSTAGRAM */}
-  <a
-    href={instagram}
-    target="_blank"
-    rel="noreferrer"
-    className="contact-card instagram-card"
-  >
-    <div className="contact-icon">📸</div>
-    <span>INSTAGRAM</span>
-    <strong>Follow Us</strong>
-    <small>@shreevishwakarmaagri</small>
-  </a>
+          {/* EMAIL */}
+          <a
+            href={`mailto:${email}`}
+            className="contact-card"
+          >
+            <div className="contact-icon">✉️</div>
+            <span>EMAIL</span>
+            <strong>Email Us</strong>
+            <small>{email}</small>
+          </a>
 
-</div>
-          
+
+          {/* INSTAGRAM */}
+          <a
+            href={instagram}
+            target="_blank"
+            rel="noreferrer"
+            className="contact-card instagram-card"
+          >
+            <div className="contact-icon">📸</div>
+            <span>INSTAGRAM</span>
+            <strong>Follow Us</strong>
+            <small>@shreevishwakarmaagri</small>
+          </a>
+
+        </div>
+
 
         <div className="address-box">
 
-  <div className="address-icon">📍</div>
+          <div className="address-icon">📍</div>
 
-  <div>
-    <span>OUR LOCATION</span>
+          <div>
+            <span>OUR LOCATION</span>
 
-    <strong>
-      Shree Vishwakarma Agriculture Repairing Works,
-      Vijaynagar NH:58, Kadiyadra,
-      Gujarat - 383440, India
-    </strong>
-  </div>
+            <strong>
+              Shree Vishwakarma Agriculture Repairing Works,
+              Vijaynagar NH:58, Kadiyadra,
+              Gujarat - 383440, India
+            </strong>
+          </div>
 
-  <a
-    href="https://www.google.com/maps/search/?api=1&query=Shree%20Vishwakarma%20Agriculture%20Repairing%20Works%2C%20Vijaynagar%20NH%2058%2C%20Kadiyadra%2C%20Gujarat%20383440"
-    target="_blank"
-    rel="noreferrer"
-  >
-    Open Maps →
-  </a>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Shree%20Vishwakarma%20Agriculture%20Repairing%20Works%2C%20Vijaynagar%20NH%2058%2C%20Kadiyadra%2C%20Gujarat%20383440"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open Maps →
+          </a>
 
-</div>
+        </div>
 
-      
+
       </section>
 
 
@@ -1464,14 +1464,14 @@ function App() {
         </a>
 
         <a
-  href={instagram}
-  target="_blank"
-  rel="noreferrer"
-  className="float instagram"
-  title="Instagram"
->
-  📸
-</a>
+          href={instagram}
+          target="_blank"
+          rel="noreferrer"
+          className="float instagram"
+          title="Instagram"
+        >
+          📸
+        </a>
 
         <a
           href={`tel:${phone1}`}
