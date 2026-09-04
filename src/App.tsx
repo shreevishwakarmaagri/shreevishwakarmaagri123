@@ -1,4 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import reaper1 from "./assets/reaper/reaper_1.JPG";
+import reaper2 from "./assets/reaper/reaper_2.jpg";
+import reaper3 from "./assets/reaper/reaper_3.JPG";
+import reaper4 from "./assets/reaper/reaper_4.JPG";
+import reaper5 from "./assets/reaper/reaper_5.jpg";
+import reaper6 from "./assets/reaper/reaper_6.png";
+import reaper7 from "./assets/reaper/reaper_7.png";
+import reaper8 from "./assets/reaper/reaper_8.png";
 import "./index.css";
 
 const phone1 = "9925051462";
@@ -89,9 +97,211 @@ const reasons = [
   },
 ];
 
+/* ================= REAPER PAGE COMPONENT ================= */
+const reaperImages = [
+  { src: reaper1, alt: "Reaper Machine - Front View" },
+  { src: reaper2, alt: "Reaper Machine - Side View" },
+  { src: reaper3, alt: "Reaper Machine - Working in Field" },
+  { src: reaper4, alt: "Reaper Machine - Harvesting" },
+  { src: reaper5, alt: "Reaper Machine - Close Up" },
+  { src: reaper6, alt: "Reaper Machine - Detail View" },
+  { src: reaper7, alt: "Reaper Machine - Full View" },
+  { src: reaper8, alt: "Reaper Machine - Field Operation" },
+];
+
+function ReaperPage({ onBack }: { onBack: () => void }) {
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (lightbox !== null) {
+        if (e.key === "ArrowRight") setLightbox((p) => (p! + 1) % reaperImages.length);
+        if (e.key === "ArrowLeft")  setLightbox((p) => (p! - 1 + reaperImages.length) % reaperImages.length);
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightbox, closeLightbox]);
+
+  return (
+    <div className="reaper-page">
+
+      {/* ---- TOP BAR ---- */}
+      <header className="rp-header">
+        <button className="rp-back" onClick={onBack}>
+          ← Back
+        </button>
+        <div className="brand">
+          <div className="brand-logo">🌾</div>
+          <div>
+            <strong>Shree Vishwakarma</strong>
+            <small>Agricultural &amp; Road Equipment</small>
+          </div>
+        </div>
+        <a href="#rp-contact" className="rp-header-cta">Enquire Now</a>
+      </header>
+
+      {/* ---- HERO BANNER ---- */}
+      <section className="rp-hero">
+        <div className="rp-hero-inner">
+          <div className="rp-tag">🌾 AGRICULTURE EQUIPMENT</div>
+          <h1>Reaper Machine</h1>
+          <p className="rp-subtitle">
+            High-performance crop harvesting machine built for Indian farming conditions.
+            Saves time, reduces labour cost and increases field productivity.
+          </p>
+          <div className="rp-badges">
+            <span>⚡ High Speed</span>
+            <span>🔧 Low Maintenance</span>
+            <span>🌾 Multi-Crop</span>
+            <span>🇮🇳 Made for India</span>
+          </div>
+        </div>
+        <div className="rp-hero-img">
+          <img src={reaper1} alt="Reaper Machine" />
+        </div>
+      </section>
+
+      {/* ---- DESCRIPTION ---- */}
+      <section className="rp-about">
+        <div className="rp-about-inner">
+
+          <div className="rp-about-text">
+            <div className="rp-section-tag">ABOUT THE MACHINE</div>
+            <h2>Efficient Harvesting,<span> Zero Compromise.</span></h2>
+            <p>
+              The Reaper is a powerful agricultural machine designed to harvest crops like wheat,
+              paddy, and other standing crops quickly and efficiently. It replaces the heavy manual
+              labour required during harvest season, helping farmers complete their harvest in a
+              fraction of the time.
+            </p>
+            <p>
+              Our Reaper machines are selected and tested for Indian soil and crop conditions —
+              delivering consistent performance season after season.
+            </p>
+          </div>
+
+          <div className="rp-features">
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">🌾</span>
+              <div>
+                <strong>Multi-Crop Compatible</strong>
+                <small>Works on wheat, paddy, soybean &amp; more</small>
+              </div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">⚡</span>
+              <div>
+                <strong>High-Speed Harvesting</strong>
+                <small>Harvests up to 1 acre per hour</small>
+              </div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">🔧</span>
+              <div>
+                <strong>Easy Maintenance</strong>
+                <small>Simple parts, easy to service locally</small>
+              </div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">💰</span>
+              <div>
+                <strong>Government Subsidy</strong>
+                <small>May qualify for agricultural subsidy</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ---- GALLERY ---- */}
+      <section className="rp-gallery-section">
+        <div className="rp-section-heading">
+          <div className="rp-section-tag">PHOTO GALLERY</div>
+          <h2>See the Machine<span> in Action</span></h2>
+          <p>Click any photo to view full size</p>
+        </div>
+
+        <div className="rp-gallery">
+          {reaperImages.map((img, i) => (
+            <div
+              className="rp-gallery-item"
+              key={i}
+              onClick={() => setLightbox(i)}
+            >
+              <img src={img.src} alt={img.alt} loading="lazy" />
+              <div className="rp-gallery-overlay">
+                <span>🔍 View</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ---- CONTACT ---- */}
+      <section id="rp-contact" className="rp-contact">
+        <div className="rp-contact-inner">
+          <div className="rp-section-tag">GET IN TOUCH</div>
+          <h2>Interested in the<span> Reaper Machine?</span></h2>
+          <p>Contact us today for pricing, demo, or subsidy information.</p>
+          <div className="rp-contact-btns">
+            <a href="tel:9925051462" className="rp-btn-primary">📞 Call Now</a>
+            <a
+              href="https://wa.me/919925051462"
+              target="_blank"
+              rel="noreferrer"
+              className="rp-btn-whatsapp"
+            >
+              💬 WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ---- FOOTER ---- */}
+      <footer className="rp-footer">
+        <button className="rp-back-footer" onClick={onBack}>← Back to Main Site</button>
+        <p>© {new Date().getFullYear()} Shree Vishwakarma Agricultural &amp; Road Equipment</p>
+      </footer>
+
+      {/* ---- LIGHTBOX ---- */}
+      {lightbox !== null && (
+        <div className="rp-lightbox" onClick={closeLightbox}>
+          <button className="rp-lb-close" onClick={closeLightbox}>✕</button>
+          <button
+            className="rp-lb-prev"
+            onClick={(e) => { e.stopPropagation(); setLightbox((p) => (p! - 1 + reaperImages.length) % reaperImages.length); }}
+          >‹</button>
+          <img
+            src={reaperImages[lightbox].src}
+            alt={reaperImages[lightbox].alt}
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
+            className="rp-lb-next"
+            onClick={(e) => { e.stopPropagation(); setLightbox((p) => (p! + 1) % reaperImages.length); }}
+          >›</button>
+          <p className="rp-lb-counter">{lightbox + 1} / {reaperImages.length}</p>
+        </div>
+      )}
+
+    </div>
+  );
+}
+
+/* ================= MAIN APP ================= */
 function App() {
 
   const [activeSection, setActiveSection] = useState("home");
+  const [showReaper, setShowReaper] = useState(false);
 
   const [stats, setStats] = useState({
     categories: 0,
@@ -169,6 +379,10 @@ function App() {
 
     requestAnimationFrame(animate);
   }, []);
+
+  if (showReaper) {
+    return <ReaperPage onBack={() => { setShowReaper(false); setTimeout(() => { document.getElementById("agriculture")?.scrollIntoView({ behavior: "smooth" }); }, 100); }} />;
+  }
 
   return (
     <div className="site">
@@ -411,9 +625,15 @@ function App() {
 
               <p>{machine.text}</p>
 
-              <a href="#contact">
-                Enquire Now <span>→</span>
-              </a>
+              {machine.title === "Reaper" ? (
+                <button className="machine-view-btn" onClick={() => setShowReaper(true)}>
+                  View Reaper <span>→</span>
+                </button>
+              ) : (
+                <a href="#contact">
+                  Enquire Now <span>→</span>
+                </a>
+              )}
 
             </div>
           ))}
