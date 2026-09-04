@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
-import reaper1 from "./assets/reaper/reaper_1.JPG";
+import reaper1 from "./assets/reaper/reaper_1.jpg";
 import reaper2 from "./assets/reaper/reaper_2.jpg";
-import reaper3 from "./assets/reaper/reaper_3.JPG";
-import reaper4 from "./assets/reaper/reaper_4.JPG";
+import reaper3 from "./assets/reaper/reaper_3.jpg";
+import reaper4 from "./assets/reaper/reaper_4.jpg";
 import reaper5 from "./assets/reaper/reaper_5.jpg";
 import reaper6 from "./assets/reaper/reaper_6.png";
 import reaper7 from "./assets/reaper/reaper_7.png";
