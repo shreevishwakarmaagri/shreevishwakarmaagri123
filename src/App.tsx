@@ -23,6 +23,21 @@ import seedDrill4 from "./assets/seed drill/seed_drill_4.png";
 import blower1 from "./assets/blower/blower_1.png";
 import blower2 from "./assets/blower/blower_2.png";
 import blower3 from "./assets/blower/blower_3.png";
+// Road Cleaner
+import roadCleaner1 from "./assets/road cleaner/road_cleaner_1.png";
+import roadCleaner2 from "./assets/road cleaner/road_cleaner_2.png";
+import roadCleaner3 from "./assets/road cleaner/road_cleaner_3.png";
+import roadCleaner4 from "./assets/road cleaner/road_cleaner_4.png";
+// Road Widener
+import roadWidener1 from "./assets/road widener/road_widener_1.jpeg";
+import roadWidener2 from "./assets/road widener/road_widener_2.jpeg";
+import roadWidener3 from "./assets/road widener/road_widener_3.jpeg";
+import roadWidener4 from "./assets/road widener/road_widener_4.jpeg";
+import roadWidener5 from "./assets/road widener/road_widener_5.jpeg";
+import roadWidener6 from "./assets/road widener/road_widener_6.jpeg";
+import roadWidener7 from "./assets/road widener/road_widener_7.jpeg";
+import roadWidener8 from "./assets/road widener/road_widener_8.jpeg";
+import roadWidener9 from "./assets/road widener/road_widener_9.jpeg";
 import "./index.css";
 
 const phone1 = "9925051462";
@@ -728,6 +743,315 @@ function BlowerPage({ onBack }: { onBack: () => void }) {
   );
 }
 
+/* ================= ROAD CLEANER PAGE ================= */
+const roadCleanerImages = [
+  { src: roadCleaner1, alt: "Road Cleaner - View 1" },
+  { src: roadCleaner2, alt: "Road Cleaner - View 2" },
+  { src: roadCleaner3, alt: "Road Cleaner - View 3" },
+  { src: roadCleaner4, alt: "Road Cleaner - View 4" },
+];
+
+function RoadCleanerPage({ onBack }: { onBack: () => void }) {
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (lightbox !== null) {
+        if (e.key === "ArrowRight") setLightbox((p) => (p! + 1) % roadCleanerImages.length);
+        if (e.key === "ArrowLeft") setLightbox((p) => (p! - 1 + roadCleanerImages.length) % roadCleanerImages.length);
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightbox, closeLightbox]);
+
+  return (
+    <div className="reaper-page">
+      <header className="rp-header">
+        <button className="rp-back" onClick={onBack}>
+          ← Back to Main Site
+        </button>
+        <div className="brand">
+          <span className="rp-header-logo">🚜</span>
+          <div>
+            <strong>Shree Vishwakarma</strong>
+            <small>Road Equipment</small>
+          </div>
+        </div>
+        <a href="#rp-contact" className="rp-header-cta">
+          Enquire Now
+        </a>
+      </header>
+
+      <section className="rp-hero">
+        <div className="rp-hero-inner">
+          <div className="rp-tag">ROAD EQUIPMENT</div>
+          <h1>
+            Heavy Duty<br />
+            <span>Road Cleaner</span> Machine
+          </h1>
+          <p className="rp-subtitle">
+            Tractor-operated high-performance road sweeping machine engineered
+            for rapid surface cleaning, dust removal, and highway maintenance.
+          </p>
+          <div className="rp-badges">
+            <span>🧹 Fast Sweeping Speed</span>
+            <span>🚜 Tractor Coupling</span>
+            <span>🛡️ Heavy Duty Build</span>
+            <span>🇮🇳 Made for India</span>
+          </div>
+        </div>
+        <div className="rp-hero-img">
+          <img src={roadCleaner1} alt="Road Cleaner Machine" />
+        </div>
+      </section>
+
+      <section className="rp-about">
+        <div className="rp-about-inner">
+          <div className="rp-about-text">
+            <div className="rp-section-tag">ABOUT THE MACHINE</div>
+            <h2>Powerful Surface Sweeping,<span> Built for Roads &amp; Sites.</span></h2>
+            <p>
+              The Road Cleaner (Tractor Road Sweeper) is specialized equipment designed for cleaning debris,
+              loose soil, sand, dust, and gravel from highways, municipal roads, and construction sites.
+              Mounted on standard tractors, it delivers powerful sweeping performance with low maintenance costs.
+            </p>
+            <p>
+              Equipped with high-density abrasion-resistant bristles and a sturdy steel chassis, it ensures rapid
+              surface preparation prior to bitumen spraying, asphalt laying, or routine highway cleanliness.
+            </p>
+          </div>
+          <div className="rp-features">
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">🧹</span>
+              <div><strong>Durable Brush Rollers</strong><small>High-density bristles for long life</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">🚜</span>
+              <div><strong>Tractor Coupled</strong><small>Simple 3-point linkage or drawbar hitch</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">🛡️</span>
+              <div><strong>Robust Steel Chassis</strong><small>Withstands harsh road site conditions</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">⚡</span>
+              <div><strong>Fast Surface Prep</strong><small>Cleans kilometers of road in hours</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="rp-gallery-section">
+        <div className="rp-section-heading">
+          <div className="rp-section-tag">PHOTO GALLERY</div>
+          <h2>See the Machine<span> in Action</span></h2>
+          <p>Click any photo to view full size ({roadCleanerImages.length} photos)</p>
+        </div>
+        <div className="rp-gallery">
+          {roadCleanerImages.map((img, i) => (
+            <div className="rp-gallery-item" key={i} onClick={() => setLightbox(i)}>
+              <img src={img.src} alt={img.alt} loading="lazy" />
+              <div className="rp-gallery-overlay"><span>🔍 View</span></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="rp-contact" className="rp-contact">
+        <div className="rp-contact-inner">
+          <div className="rp-section-tag">GET IN TOUCH</div>
+          <h2>Interested in the<span> Road Cleaner?</span></h2>
+          <p>Contact us today for pricing, technical specifications, or custom order.</p>
+          <div className="rp-contact-btns">
+            <a href="tel:9925051462" className="rp-btn-primary">📞 Call Now</a>
+            <a href="https://wa.me/919925051462" target="_blank" rel="noreferrer" className="rp-btn-whatsapp">💬 WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      <footer className="rp-footer">
+        <button className="rp-back-footer" onClick={onBack}>← Back to Main Site</button>
+        <p>© {new Date().getFullYear()} Shree Vishwakarma Agricultural &amp; Road Equipment</p>
+      </footer>
+
+      {lightbox !== null && (
+        <div className="rp-lightbox" onClick={closeLightbox}>
+          <button className="rp-lb-close" onClick={closeLightbox}>✕</button>
+          <button className="rp-lb-prev" onClick={(e) => { e.stopPropagation(); setLightbox((p) => (p! - 1 + roadCleanerImages.length) % roadCleanerImages.length); }}>‹</button>
+          <img src={roadCleanerImages[lightbox].src} alt={roadCleanerImages[lightbox].alt} onClick={(e) => e.stopPropagation()} />
+          <button className="rp-lb-next" onClick={(e) => { e.stopPropagation(); setLightbox((p) => (p! + 1) % roadCleanerImages.length); }}>›</button>
+          <p className="rp-lb-counter">{lightbox + 1} / {roadCleanerImages.length}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ================= ROAD WIDENER PAGE ================= */
+const roadWidenerImages = [
+  { src: roadWidener1, alt: "Road Widener - View 1" },
+  { src: roadWidener2, alt: "Road Widener - View 2" },
+  { src: roadWidener3, alt: "Road Widener - View 3" },
+  { src: roadWidener4, alt: "Road Widener - View 4" },
+  { src: roadWidener5, alt: "Road Widener - View 5" },
+  { src: roadWidener6, alt: "Road Widener - View 6" },
+  { src: roadWidener7, alt: "Road Widener - View 7" },
+  { src: roadWidener8, alt: "Road Widener - View 8" },
+  { src: roadWidener9, alt: "Road Widener - View 9" },
+];
+
+function RoadWidenerPage({ onBack }: { onBack: () => void }) {
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (lightbox !== null) {
+        if (e.key === "ArrowRight") setLightbox((p) => (p! + 1) % roadWidenerImages.length);
+        if (e.key === "ArrowLeft") setLightbox((p) => (p! - 1 + roadWidenerImages.length) % roadWidenerImages.length);
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightbox, closeLightbox]);
+
+  return (
+    <div className="reaper-page">
+      <header className="rp-header">
+        <button className="rp-back" onClick={onBack}>
+          ← Back to Main Site
+        </button>
+        <div className="brand">
+          <span className="rp-header-logo">🚧</span>
+          <div>
+            <strong>Shree Vishwakarma</strong>
+            <small>Road Equipment</small>
+          </div>
+        </div>
+        <a href="#rp-contact" className="rp-header-cta">
+          Enquire Now
+        </a>
+      </header>
+
+      <section className="rp-hero">
+        <div className="rp-hero-inner">
+          <div className="rp-tag">ROAD EQUIPMENT</div>
+          <h1>
+            Professional<br />
+            <span>Road Widener</span> Equipment
+          </h1>
+          <p className="rp-subtitle">
+            Engineered for efficient shoulder paving, trench filling, and material spreading.
+            Saves significant manual labor and speeds up highway development.
+          </p>
+          <div className="rp-badges">
+            <span>🚧 Shoulder Widening</span>
+            <span>📐 Adjustable Width</span>
+            <span>🚜 Tractor Compatible</span>
+            <span>🇮🇳 Made for India</span>
+          </div>
+        </div>
+        <div className="rp-hero-img">
+          <img src={roadWidener1} alt="Road Widener Equipment" />
+        </div>
+      </section>
+
+      <section className="rp-about">
+        <div className="rp-about-inner">
+          <div className="rp-about-text">
+            <div className="rp-section-tag">ABOUT THE EQUIPMENT</div>
+            <h2>Engineered for Fast &amp; Accurate<span> Road Shoulder Work.</span></h2>
+            <p>
+              The Road Widener is designed to lay and spread gravel, aggregate, asphalt, and soil efficiently
+              along road shoulders and widening trenches. It drastically reduces manual labor, eliminates material wastage,
+              and significantly accelerates road widening projects.
+            </p>
+            <p>
+              Built with heavy-duty structural steel and precision flow control, it provides adjustable laying width
+              and depth control to meet the rigorous quality standards of national and state highway engineering.
+            </p>
+          </div>
+          <div className="rp-features">
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">📐</span>
+              <div><strong>Adjustable Width &amp; Depth</strong><small>Precise material placement control</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">🚜</span>
+              <div><strong>Tractor / Loader Hitch</strong><small>Seamless attachment &amp; smooth towing</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">🏗️</span>
+              <div><strong>Heavy Duty Build</strong><small>Built for aggregate, gravel &amp; asphalt</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">⚡</span>
+              <div><strong>Labor &amp; Time Saving</strong><small>Covers long road stretches in single day</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="rp-gallery-section">
+        <div className="rp-section-heading">
+          <div className="rp-section-tag">PHOTO GALLERY</div>
+          <h2>See the Machine<span> in Action</span></h2>
+          <p>Click any photo to view full size ({roadWidenerImages.length} photos)</p>
+        </div>
+        <div className="rp-gallery">
+          {roadWidenerImages.map((img, i) => (
+            <div className="rp-gallery-item" key={i} onClick={() => setLightbox(i)}>
+              <img src={img.src} alt={img.alt} loading="lazy" />
+              <div className="rp-gallery-overlay"><span>🔍 View</span></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="rp-contact" className="rp-contact">
+        <div className="rp-contact-inner">
+          <div className="rp-section-tag">GET IN TOUCH</div>
+          <h2>Interested in the<span> Road Widener?</span></h2>
+          <p>Contact us today for pricing, technical details, or a live demo.</p>
+          <div className="rp-contact-btns">
+            <a href="tel:9925051462" className="rp-btn-primary">📞 Call Now</a>
+            <a href="https://wa.me/919925051462" target="_blank" rel="noreferrer" className="rp-btn-whatsapp">💬 WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      <footer className="rp-footer">
+        <button className="rp-back-footer" onClick={onBack}>← Back to Main Site</button>
+        <p>© {new Date().getFullYear()} Shree Vishwakarma Agricultural &amp; Road Equipment</p>
+      </footer>
+
+      {lightbox !== null && (
+        <div className="rp-lightbox" onClick={closeLightbox}>
+          <button className="rp-lb-close" onClick={closeLightbox}>✕</button>
+          <button className="rp-lb-prev" onClick={(e) => { e.stopPropagation(); setLightbox((p) => (p! - 1 + roadWidenerImages.length) % roadWidenerImages.length); }}>‹</button>
+          <img src={roadWidenerImages[lightbox].src} alt={roadWidenerImages[lightbox].alt} onClick={(e) => e.stopPropagation()} />
+          <button className="rp-lb-next" onClick={(e) => { e.stopPropagation(); setLightbox((p) => (p! + 1) % roadWidenerImages.length); }}>›</button>
+          <p className="rp-lb-counter">{lightbox + 1} / {roadWidenerImages.length}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ================= MAIN APP ================= */
 function App() {
 
@@ -736,6 +1060,8 @@ function App() {
   const [showChaffCutter, setShowChaffCutter] = useState(false);
   const [showSeedDrill, setShowSeedDrill] = useState(false);
   const [showBlower, setShowBlower] = useState(false);
+  const [showRoadCleaner, setShowRoadCleaner] = useState(false);
+  const [showRoadWidener, setShowRoadWidener] = useState(false);
 
   const [stats, setStats] = useState({
     categories: 0,
@@ -814,15 +1140,22 @@ function App() {
     requestAnimationFrame(animate);
   }, []);
 
-  const goBack = () => {
-    setShowReaper(false); setShowChaffCutter(false); setShowSeedDrill(false); setShowBlower(false);
-    setTimeout(() => { document.getElementById("agriculture")?.scrollIntoView({ behavior: "smooth" }); }, 100);
+  const goBack = (section = "agriculture") => {
+    setShowReaper(false);
+    setShowChaffCutter(false);
+    setShowSeedDrill(false);
+    setShowBlower(false);
+    setShowRoadCleaner(false);
+    setShowRoadWidener(false);
+    setTimeout(() => { document.getElementById(section)?.scrollIntoView({ behavior: "smooth" }); }, 100);
   };
 
-  if (showReaper) return <ReaperPage onBack={goBack} />;
-  if (showChaffCutter) return <ChaffCutterPage onBack={goBack} />;
-  if (showSeedDrill) return <SeedDrillPage onBack={goBack} />;
-  if (showBlower) return <BlowerPage onBack={goBack} />;
+  if (showReaper) return <ReaperPage onBack={() => goBack("agriculture")} />;
+  if (showChaffCutter) return <ChaffCutterPage onBack={() => goBack("agriculture")} />;
+  if (showSeedDrill) return <SeedDrillPage onBack={() => goBack("agriculture")} />;
+  if (showBlower) return <BlowerPage onBack={() => goBack("agriculture")} />;
+  if (showRoadCleaner) return <RoadCleanerPage onBack={() => goBack("road")} />;
+  if (showRoadWidener) return <RoadWidenerPage onBack={() => goBack("road")} />;
 
   return (
     <div className="site">
@@ -1130,9 +1463,13 @@ function App() {
 
               <p>{machine.text}</p>
 
-              <a href="#contact">
-                View Equipment <span>→</span>
-              </a>
+              {machine.title === "Road Cleaner" ? (
+                <button className="machine-view-btn" onClick={() => setShowRoadCleaner(true)}>View Road Cleaner <span>→</span></button>
+              ) : machine.title === "Road Widener" ? (
+                <button className="machine-view-btn" onClick={() => setShowRoadWidener(true)}>View Road Widener <span>→</span></button>
+              ) : (
+                <a href="#contact">View Equipment <span>→</span></a>
+              )}
 
             </div>
           ))}
