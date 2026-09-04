@@ -7,6 +7,22 @@ import reaper5 from "./assets/reaper/reaper_5.jpg";
 import reaper6 from "./assets/reaper/reaper_6.png";
 import reaper7 from "./assets/reaper/reaper_7.png";
 import reaper8 from "./assets/reaper/reaper_8.png";
+// Chaff Cutter
+import chaffCutter1 from "./assets/chaff cutter/chaff_cutter_1.jpg";
+import chaffCutter2 from "./assets/chaff cutter/chaff_cutter_2.JPG";
+import chaffCutter3 from "./assets/chaff cutter/chaff_cutter_3.png";
+import chaffCutter4 from "./assets/chaff cutter/chaff_cutter_4.png";
+import chaffCutter5 from "./assets/chaff cutter/chaff_cutter_5.png";
+import chaffCutter6 from "./assets/chaff cutter/chaff_cutter_6.png";
+// Seed Drill
+import seedDrill1 from "./assets/seed drill/seed_drill_1.png";
+import seedDrill2 from "./assets/seed drill/seed_drill_2.png";
+import seedDrill3 from "./assets/seed drill/seed_drill_3.png";
+import seedDrill4 from "./assets/seed drill/seed_drill_4.png";
+// Blower
+import blower1 from "./assets/blower/blower_1.png";
+import blower2 from "./assets/blower/blower_2.png";
+import blower3 from "./assets/blower/blower_3.png";
 import "./index.css";
 
 const phone1 = "9925051462";
@@ -297,11 +313,429 @@ function ReaperPage({ onBack }: { onBack: () => void }) {
   );
 }
 
+/* ================= CHAFF CUTTER PAGE ================= */
+const chaffCutterImages = [
+  { src: chaffCutter1, alt: "Chaff Cutter - View 1" },
+  { src: chaffCutter2, alt: "Chaff Cutter - View 2" },
+  { src: chaffCutter3, alt: "Chaff Cutter - View 3" },
+  { src: chaffCutter4, alt: "Chaff Cutter - View 4" },
+  { src: chaffCutter5, alt: "Chaff Cutter - View 5" },
+  { src: chaffCutter6, alt: "Chaff Cutter - View 6" },
+];
+
+function ChaffCutterPage({ onBack }: { onBack: () => void }) {
+  const [lightbox, setLightbox] = useState<number | null>(null);
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (lightbox !== null) {
+        if (e.key === "ArrowRight") setLightbox((p) => (p! + 1) % chaffCutterImages.length);
+        if (e.key === "ArrowLeft")  setLightbox((p) => (p! - 1 + chaffCutterImages.length) % chaffCutterImages.length);
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightbox, closeLightbox]);
+
+  return (
+    <div className="reaper-page">
+      <header className="rp-header">
+        <button className="rp-back" onClick={onBack}>← Back</button>
+        <div className="brand">
+          <div className="brand-logo">🌾</div>
+          <div><strong>Shree Vishwakarma</strong><small>Agricultural &amp; Road Equipment</small></div>
+        </div>
+        <a href="#rp-contact" className="rp-header-cta">Enquire Now</a>
+      </header>
+
+      <section className="rp-hero">
+        <div className="rp-hero-inner">
+          <div className="rp-tag">🌾 AGRICULTURE EQUIPMENT</div>
+          <h1>Chaff Cutter Machine</h1>
+          <p className="rp-subtitle">
+            Powerful and reliable machine for fast, efficient fodder cutting.
+            Reduces manual effort and increases cattle feed productivity on your farm.
+          </p>
+          <div className="rp-badges">
+            <span>⚡ High Power</span>
+            <span>🔧 Easy to Operate</span>
+            <span>🐄 Cattle Friendly</span>
+            <span>🇮🇳 Made for India</span>
+          </div>
+        </div>
+        <div className="rp-hero-img">
+          <img src={chaffCutter1} alt="Chaff Cutter Machine" />
+        </div>
+      </section>
+
+      <section className="rp-about">
+        <div className="rp-about-inner">
+          <div className="rp-about-text">
+            <div className="rp-section-tag">ABOUT THE MACHINE</div>
+            <h2>Fast Fodder Cutting,<span> Every Time.</span></h2>
+            <p>
+              The Chaff Cutter is designed to cut green or dry fodder into small pieces for
+              cattle feeding. It dramatically reduces the time and effort needed to prepare
+              animal feed, making daily farm operations easier and more efficient.
+            </p>
+            <p>
+              Our Chaff Cutters are robust, easy to maintain and built to deliver consistent
+              output under heavy daily use in Indian farm conditions.
+            </p>
+          </div>
+          <div className="rp-features">
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">⚙️</span>
+              <div><strong>Heavy Duty Motor</strong><small>High-power motor for continuous operation</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">🌿</span>
+              <div><strong>Multi-Fodder</strong><small>Cuts green & dry fodder efficiently</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">🔧</span>
+              <div><strong>Easy Maintenance</strong><small>Simple blade replacement & servicing</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">💰</span>
+              <div><strong>Government Subsidy</strong><small>May qualify for agricultural subsidy</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="rp-gallery-section">
+        <div className="rp-section-heading">
+          <div className="rp-section-tag">PHOTO GALLERY</div>
+          <h2>See the Machine<span> in Action</span></h2>
+          <p>Click any photo to view full size</p>
+        </div>
+        <div className="rp-gallery">
+          {chaffCutterImages.map((img, i) => (
+            <div className="rp-gallery-item" key={i} onClick={() => setLightbox(i)}>
+              <img src={img.src} alt={img.alt} loading="lazy" />
+              <div className="rp-gallery-overlay"><span>🔍 View</span></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="rp-contact" className="rp-contact">
+        <div className="rp-contact-inner">
+          <div className="rp-section-tag">GET IN TOUCH</div>
+          <h2>Interested in the<span> Chaff Cutter?</span></h2>
+          <p>Contact us today for pricing, demo, or subsidy information.</p>
+          <div className="rp-contact-btns">
+            <a href="tel:9925051462" className="rp-btn-primary">📞 Call Now</a>
+            <a href="https://wa.me/919925051462" target="_blank" rel="noreferrer" className="rp-btn-whatsapp">💬 WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      <footer className="rp-footer">
+        <button className="rp-back-footer" onClick={onBack}>← Back to Main Site</button>
+        <p>© {new Date().getFullYear()} Shree Vishwakarma Agricultural &amp; Road Equipment</p>
+      </footer>
+
+      {lightbox !== null && (
+        <div className="rp-lightbox" onClick={closeLightbox}>
+          <button className="rp-lb-close" onClick={closeLightbox}>✕</button>
+          <button className="rp-lb-prev" onClick={(e) => { e.stopPropagation(); setLightbox((p) => (p! - 1 + chaffCutterImages.length) % chaffCutterImages.length); }}>‹</button>
+          <img src={chaffCutterImages[lightbox].src} alt={chaffCutterImages[lightbox].alt} onClick={(e) => e.stopPropagation()} />
+          <button className="rp-lb-next" onClick={(e) => { e.stopPropagation(); setLightbox((p) => (p! + 1) % chaffCutterImages.length); }}>›</button>
+          <p className="rp-lb-counter">{lightbox + 1} / {chaffCutterImages.length}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ================= SEED DRILL PAGE ================= */
+const seedDrillImages = [
+  { src: seedDrill1, alt: "Seed Drill - View 1" },
+  { src: seedDrill2, alt: "Seed Drill - View 2" },
+  { src: seedDrill3, alt: "Seed Drill - View 3" },
+  { src: seedDrill4, alt: "Seed Drill - View 4" },
+];
+
+function SeedDrillPage({ onBack }: { onBack: () => void }) {
+  const [lightbox, setLightbox] = useState<number | null>(null);
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (lightbox !== null) {
+        if (e.key === "ArrowRight") setLightbox((p) => (p! + 1) % seedDrillImages.length);
+        if (e.key === "ArrowLeft")  setLightbox((p) => (p! - 1 + seedDrillImages.length) % seedDrillImages.length);
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightbox, closeLightbox]);
+
+  return (
+    <div className="reaper-page">
+      <header className="rp-header">
+        <button className="rp-back" onClick={onBack}>← Back</button>
+        <div className="brand">
+          <div className="brand-logo">🌾</div>
+          <div><strong>Shree Vishwakarma</strong><small>Agricultural &amp; Road Equipment</small></div>
+        </div>
+        <a href="#rp-contact" className="rp-header-cta">Enquire Now</a>
+      </header>
+
+      <section className="rp-hero">
+        <div className="rp-hero-inner">
+          <div className="rp-tag">🌾 AGRICULTURE EQUIPMENT</div>
+          <h1>Seed Drill Machine</h1>
+          <p className="rp-subtitle">
+            Modern seed sowing equipment for accurate and efficient agricultural operations.
+            Ensures uniform seed placement for better germination and crop yield.
+          </p>
+          <div className="rp-badges">
+            <span>🌱 Accurate Sowing</span>
+            <span>📏 Uniform Spacing</span>
+            <span>⛽ Fuel Efficient</span>
+            <span>🇮🇳 Made for India</span>
+          </div>
+        </div>
+        <div className="rp-hero-img">
+          <img src={seedDrill1} alt="Seed Drill Machine" />
+        </div>
+      </section>
+
+      <section className="rp-about">
+        <div className="rp-about-inner">
+          <div className="rp-about-text">
+            <div className="rp-section-tag">ABOUT THE MACHINE</div>
+            <h2>Precise Sowing,<span> Better Yield.</span></h2>
+            <p>
+              The Seed Drill machine ensures seeds are sown at the right depth and spacing,
+              maximizing germination rates and crop productivity. It replaces manual broadcasting
+              methods with precision planting that saves seeds and improves output.
+            </p>
+            <p>
+              Suitable for wheat, mustard, gram and other row crops — our Seed Drills are
+              tested and trusted for Indian field conditions.
+            </p>
+          </div>
+          <div className="rp-features">
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">🌱</span>
+              <div><strong>Multi-Crop Sowing</strong><small>Wheat, mustard, gram & more</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">📏</span>
+              <div><strong>Uniform Row Spacing</strong><small>Precise depth & seed placement</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">⛽</span>
+              <div><strong>Fuel Efficient</strong><small>Low operating cost per acre</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">💰</span>
+              <div><strong>Government Subsidy</strong><small>May qualify for agricultural subsidy</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="rp-gallery-section">
+        <div className="rp-section-heading">
+          <div className="rp-section-tag">PHOTO GALLERY</div>
+          <h2>See the Machine<span> in Action</span></h2>
+          <p>Click any photo to view full size</p>
+        </div>
+        <div className="rp-gallery">
+          {seedDrillImages.map((img, i) => (
+            <div className="rp-gallery-item" key={i} onClick={() => setLightbox(i)}>
+              <img src={img.src} alt={img.alt} loading="lazy" />
+              <div className="rp-gallery-overlay"><span>🔍 View</span></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="rp-contact" className="rp-contact">
+        <div className="rp-contact-inner">
+          <div className="rp-section-tag">GET IN TOUCH</div>
+          <h2>Interested in the<span> Seed Drill?</span></h2>
+          <p>Contact us today for pricing, demo, or subsidy information.</p>
+          <div className="rp-contact-btns">
+            <a href="tel:9925051462" className="rp-btn-primary">📞 Call Now</a>
+            <a href="https://wa.me/919925051462" target="_blank" rel="noreferrer" className="rp-btn-whatsapp">💬 WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      <footer className="rp-footer">
+        <button className="rp-back-footer" onClick={onBack}>← Back to Main Site</button>
+        <p>© {new Date().getFullYear()} Shree Vishwakarma Agricultural &amp; Road Equipment</p>
+      </footer>
+
+      {lightbox !== null && (
+        <div className="rp-lightbox" onClick={closeLightbox}>
+          <button className="rp-lb-close" onClick={closeLightbox}>✕</button>
+          <button className="rp-lb-prev" onClick={(e) => { e.stopPropagation(); setLightbox((p) => (p! - 1 + seedDrillImages.length) % seedDrillImages.length); }}>‹</button>
+          <img src={seedDrillImages[lightbox].src} alt={seedDrillImages[lightbox].alt} onClick={(e) => e.stopPropagation()} />
+          <button className="rp-lb-next" onClick={(e) => { e.stopPropagation(); setLightbox((p) => (p! + 1) % seedDrillImages.length); }}>›</button>
+          <p className="rp-lb-counter">{lightbox + 1} / {seedDrillImages.length}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ================= BLOWER PAGE ================= */
+const blowerImages = [
+  { src: blower1, alt: "Blower - View 1" },
+  { src: blower2, alt: "Blower - View 2" },
+  { src: blower3, alt: "Blower - View 3" },
+];
+
+function BlowerPage({ onBack }: { onBack: () => void }) {
+  const [lightbox, setLightbox] = useState<number | null>(null);
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (lightbox !== null) {
+        if (e.key === "ArrowRight") setLightbox((p) => (p! + 1) % blowerImages.length);
+        if (e.key === "ArrowLeft")  setLightbox((p) => (p! - 1 + blowerImages.length) % blowerImages.length);
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightbox, closeLightbox]);
+
+  return (
+    <div className="reaper-page">
+      <header className="rp-header">
+        <button className="rp-back" onClick={onBack}>← Back</button>
+        <div className="brand">
+          <div className="brand-logo">🌾</div>
+          <div><strong>Shree Vishwakarma</strong><small>Agricultural &amp; Road Equipment</small></div>
+        </div>
+        <a href="#rp-contact" className="rp-header-cta">Enquire Now</a>
+      </header>
+
+      <section className="rp-hero">
+        <div className="rp-hero-inner">
+          <div className="rp-tag">🌾 AGRICULTURE EQUIPMENT</div>
+          <h1>Blower Machine</h1>
+          <p className="rp-subtitle">
+            High-performance blower equipment suitable for different agricultural applications.
+            Ideal for grain cleaning, field ventilation and crop processing.
+          </p>
+          <div className="rp-badges">
+            <span>💨 High Airflow</span>
+            <span>🌾 Grain Cleaning</span>
+            <span>🔧 Low Maintenance</span>
+            <span>🇮🇳 Made for India</span>
+          </div>
+        </div>
+        <div className="rp-hero-img">
+          <img src={blower1} alt="Blower Machine" />
+        </div>
+      </section>
+
+      <section className="rp-about">
+        <div className="rp-about-inner">
+          <div className="rp-about-text">
+            <div className="rp-section-tag">ABOUT THE MACHINE</div>
+            <h2>Powerful Airflow,<span> Reliable Performance.</span></h2>
+            <p>
+              The Blower machine is a versatile agricultural equipment used for grain cleaning,
+              removing husk and dust from harvested crops, and field ventilation during storage.
+              It saves significant manual labour during post-harvest operations.
+            </p>
+            <p>
+              Compact, easy to operate and durable — our Blowers are designed to handle
+              the demands of daily agricultural use in Indian conditions.
+            </p>
+          </div>
+          <div className="rp-features">
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">💨</span>
+              <div><strong>High Airflow Output</strong><small>Powerful fan for fast cleaning</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">🌾</span>
+              <div><strong>Grain Cleaning</strong><small>Removes husk, dust & debris</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">🔧</span>
+              <div><strong>Low Maintenance</strong><small>Durable build, easy to service</small></div>
+            </div>
+            <div className="rp-feature-card">
+              <span className="rp-feat-icon">💰</span>
+              <div><strong>Government Subsidy</strong><small>May qualify for agricultural subsidy</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="rp-gallery-section">
+        <div className="rp-section-heading">
+          <div className="rp-section-tag">PHOTO GALLERY</div>
+          <h2>See the Machine<span> in Action</span></h2>
+          <p>Click any photo to view full size</p>
+        </div>
+        <div className="rp-gallery">
+          {blowerImages.map((img, i) => (
+            <div className="rp-gallery-item" key={i} onClick={() => setLightbox(i)}>
+              <img src={img.src} alt={img.alt} loading="lazy" />
+              <div className="rp-gallery-overlay"><span>🔍 View</span></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="rp-contact" className="rp-contact">
+        <div className="rp-contact-inner">
+          <div className="rp-section-tag">GET IN TOUCH</div>
+          <h2>Interested in the<span> Blower Machine?</span></h2>
+          <p>Contact us today for pricing, demo, or subsidy information.</p>
+          <div className="rp-contact-btns">
+            <a href="tel:9925051462" className="rp-btn-primary">📞 Call Now</a>
+            <a href="https://wa.me/919925051462" target="_blank" rel="noreferrer" className="rp-btn-whatsapp">💬 WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      <footer className="rp-footer">
+        <button className="rp-back-footer" onClick={onBack}>← Back to Main Site</button>
+        <p>© {new Date().getFullYear()} Shree Vishwakarma Agricultural &amp; Road Equipment</p>
+      </footer>
+
+      {lightbox !== null && (
+        <div className="rp-lightbox" onClick={closeLightbox}>
+          <button className="rp-lb-close" onClick={closeLightbox}>✕</button>
+          <button className="rp-lb-prev" onClick={(e) => { e.stopPropagation(); setLightbox((p) => (p! - 1 + blowerImages.length) % blowerImages.length); }}>‹</button>
+          <img src={blowerImages[lightbox].src} alt={blowerImages[lightbox].alt} onClick={(e) => e.stopPropagation()} />
+          <button className="rp-lb-next" onClick={(e) => { e.stopPropagation(); setLightbox((p) => (p! + 1) % blowerImages.length); }}>›</button>
+          <p className="rp-lb-counter">{lightbox + 1} / {blowerImages.length}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ================= MAIN APP ================= */
 function App() {
 
   const [activeSection, setActiveSection] = useState("home");
   const [showReaper, setShowReaper] = useState(false);
+  const [showChaffCutter, setShowChaffCutter] = useState(false);
+  const [showSeedDrill, setShowSeedDrill] = useState(false);
+  const [showBlower, setShowBlower] = useState(false);
 
   const [stats, setStats] = useState({
     categories: 0,
@@ -380,9 +814,15 @@ function App() {
     requestAnimationFrame(animate);
   }, []);
 
-  if (showReaper) {
-    return <ReaperPage onBack={() => { setShowReaper(false); setTimeout(() => { document.getElementById("agriculture")?.scrollIntoView({ behavior: "smooth" }); }, 100); }} />;
-  }
+  const goBack = () => {
+    setShowReaper(false); setShowChaffCutter(false); setShowSeedDrill(false); setShowBlower(false);
+    setTimeout(() => { document.getElementById("agriculture")?.scrollIntoView({ behavior: "smooth" }); }, 100);
+  };
+
+  if (showReaper)      return <ReaperPage onBack={goBack} />;
+  if (showChaffCutter) return <ChaffCutterPage onBack={goBack} />;
+  if (showSeedDrill)   return <SeedDrillPage onBack={goBack} />;
+  if (showBlower)      return <BlowerPage onBack={goBack} />;
 
   return (
     <div className="site">
@@ -626,13 +1066,15 @@ function App() {
               <p>{machine.text}</p>
 
               {machine.title === "Reaper" ? (
-                <button className="machine-view-btn" onClick={() => setShowReaper(true)}>
-                  View Reaper <span>→</span>
-                </button>
+                <button className="machine-view-btn" onClick={() => setShowReaper(true)}>View Reaper <span>→</span></button>
+              ) : machine.title === "Chaff Cutter" ? (
+                <button className="machine-view-btn" onClick={() => setShowChaffCutter(true)}>View Chaff Cutter <span>→</span></button>
+              ) : machine.title === "Seed Drill" ? (
+                <button className="machine-view-btn" onClick={() => setShowSeedDrill(true)}>View Seed Drill <span>→</span></button>
+              ) : machine.title === "Blower" ? (
+                <button className="machine-view-btn" onClick={() => setShowBlower(true)}>View Blower <span>→</span></button>
               ) : (
-                <a href="#contact">
-                  Enquire Now <span>→</span>
-                </a>
+                <a href="#contact">Enquire Now <span>→</span></a>
               )}
 
             </div>
